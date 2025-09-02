@@ -1,5 +1,5 @@
 {
-  description = "shadcn/ui Rust Development Environment";
+  description = "Leptos shadcn/ui Development Environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -65,8 +65,8 @@
           ];
 
           shellHook = ''
-            echo "🦀 shadcn/ui Rust Development Environment"
-            echo "======================================"
+            echo "🦀 Leptos shadcn/ui Development Environment"
+            echo "=========================================="
             echo "Rust version: $(rustc --version)"
             echo "Cargo version: $(cargo --version)"
             echo "Node.js version: $(node --version)"

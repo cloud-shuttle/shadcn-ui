@@ -2,8 +2,8 @@
 
 # Default target
 help: ## Show this help message
-	@echo "shadcn/ui Rust Development Commands"
-	@echo "=================================="
+	@echo "Leptos shadcn/ui Development Commands"
+	@echo "===================================="
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
@@ -14,7 +14,7 @@ dev: ## Start development environment with file watching
 
 dev-examples: ## Run example applications
 	@echo "🌟 Starting Leptos examples..."
-	cd book-examples/leptos && trunk serve --open
+	cd examples/leptos && trunk serve --open
 
 # Building
 build: ## Build all packages and examples
@@ -29,8 +29,7 @@ build-release: ## Build optimized release versions
 
 build-examples: ## Build example applications
 	@echo "📦 Building examples..."
-	cd book-examples/leptos && trunk build --release
-	cd book-examples/yew && trunk build --release
+	cd examples/leptos && trunk build --release
 
 # Testing
 test: test-rust test-e2e ## Run all tests (Rust + E2E)
@@ -50,8 +49,7 @@ test-single: ## Run tests for a specific component (usage: make test-single COMP
 		exit 1; \
 	fi
 	@echo "🎯 Testing $(COMPONENT) component..."
-	cargo test -p shadcn-ui-leptos-$(COMPONENT)
-	cargo test -p shadcn-ui-yew-$(COMPONENT)
+	cargo test -p leptos-shadcn-ui-$(COMPONENT)
 
 test-e2e: install-playwright ## Run Playwright E2E tests
 	@echo "🎭 Running Playwright E2E tests..."

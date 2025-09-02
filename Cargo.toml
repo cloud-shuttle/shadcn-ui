@@ -1,77 +1,82 @@
 [workspace]
 members = [
-    "book-examples/*",
-    "packages/component-generator",
+    "packages/leptos/accordion",
     "packages/leptos/alert",
+    "packages/leptos/alert-dialog",
+    "packages/leptos/aspect-ratio",
     "packages/leptos/badge",
+    "packages/leptos/breadcrumb",
     "packages/leptos/button",
+    "packages/leptos/calendar",
     "packages/leptos/card",
+    "packages/leptos/carousel",
     "packages/leptos/checkbox",
+    "packages/leptos/collapsible",
     "packages/leptos/combobox",
+    "packages/leptos/command",
+    "packages/leptos/context-menu",
+    "packages/leptos/date-picker",
     "packages/leptos/dialog",
+    "packages/leptos/drawer",
+    "packages/leptos/dropdown-menu",
     "packages/leptos/form",
+    "packages/leptos/hover-card",
     "packages/leptos/input",
+    "packages/leptos/input-otp",
     "packages/leptos/label",
+    "packages/leptos/lazy-loading",
+    "packages/leptos/menubar",
+    "packages/leptos/navigation-menu",
     "packages/leptos/pagination",
+    "packages/leptos/popover",
+    "packages/leptos/progress",
     "packages/leptos/radio-group",
+    "packages/leptos/scroll-area",
     "packages/leptos/select",
     "packages/leptos/separator",
+    "packages/leptos/sheet",
     "packages/leptos/skeleton",
+    "packages/leptos/slider",
     "packages/leptos/switch",
     "packages/leptos/table",
     "packages/leptos/tabs",
     "packages/leptos/textarea",
+    "packages/leptos/toast",
+    "packages/leptos/toggle",
     "packages/leptos/tooltip",
     "packages/leptos/utils",
-    "packages/leptos/registry",
-    "packages/leptos/lazy-loading",
     "packages/registry",
     "packages/shadcn",
     "packages/test-utils",
-    "packages/yew/*",
+    "packages/component-generator",
     "scripts",
 ]
-resolver = "2"
 
 [workspace.package]
-authors = ["Rust for Web <info@rustforweb.org>"]
+authors = ["CloudShuttle <info@cloudshuttle.com>"]
 edition = "2024"
 license = "MIT"
-repository = "https://github.com/RustForWeb/shadcn-ui"
-version = "0.0.1"
+repository = "https://github.com/cloud-shuttle/leptos-shadcn-ui"
+version = "0.1.0"
 
 [workspace.dependencies]
-anyhow = "1.0.89"
-console_error_panic_hook = "0.1.7"
-console_log = "1.0.0"
-env_logger = "0.11.3"
-js-sys = "0.3.70"
 leptos = "0.8.0"
-leptos-node-ref = "0.2.0"
-leptos-struct-component = "0.2.0"
-leptos-style = "0.2.0"
-leptos_router = "0.8.0"
-log = "0.4.21"
-lucide-leptos = "2.29.0"
-lucide-yew = "2.0.0"
-radix-leptos-icons = { git = "https://github.com/RustForWeb/radix.git" }
-radix-yew-icons = "0.0.2"
+leptos-node-ref = "0.1.0"
+leptos-struct-component = "0.1.0"
+leptos-style = "0.1.0"
+tailwind_fuse = "0.1.0"
+web-sys = "0.3.0"
+wasm-bindgen-test = "0.3.0"
+console_error_panic_hook = "0.1.0"
+js-sys = "0.3.0"
+serde_json = "1.0.203"
+lucide-leptos = "0.1.0"
+anyhow = "1.0.0"
+tokio = { version = "1.0.0", features = ["full"] }
+clap = { version = "4.5.4", features = ["cargo", "derive"] }
+handlebars = "4.0.0"
+regex = "1.0.0"
+env_logger = "0.11.0"
+log = "0.4.0"
 serde = { version = "1.0.203", features = ["derive"] }
-serde_json = "1.0.117"
-tailwind_fuse = { version = "0.3.0", features = ["variant"] }
-tokio = { version = "1.38.0", features = ["full"] }
-handlebars = "5.1"
-regex = "1.10"
-clap = { version = "4.0", features = ["derive"] }
-wasm-bindgen-test = "0.3"
-web-sys = "0.3.70"
-yew = "0.21.0"
-shadcn-ui-test-utils = { path = "packages/test-utils" }
-yew-router = "0.18.0"
-yew-struct-component = "0.1.4"
-yew-style = "0.1.4"
-
-[patch.crates-io]
-yew = { git = "https://github.com/RustForWeb/yew.git", branch = "feature/use-composed-ref" }
-yew-router = { git = "https://github.com/RustForWeb/yew.git", branch = "feature/use-composed-ref" }
 

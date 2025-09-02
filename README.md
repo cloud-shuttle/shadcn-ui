@@ -1,33 +1,33 @@
 <p align="center">
     <a href="./logo.svg">
-        <img src="./logo.svg" width="300" height="200" alt="Rust shadcn/ui Logo">
+        <img src="./logo.svg" width="300" height="200" alt="Leptos shadcn/ui Logo">
     </a>
 </p>
 
-<h1 align="center">Rust shadcn/ui</h1>
+<h1 align="center">Leptos shadcn/ui</h1>
 
 <p align="center">
-    <strong>Beautifully designed components that you can copy and paste into your Rust web apps.</strong>
+    <strong>Beautiful, accessible UI components built specifically for Leptos applications.</strong>
 </p>
 
 <p align="center">
     <a href="#quick-start">Quick Start</a> •
-    <a href="#frameworks">Frameworks</a> •
     <a href="#components">Components</a> •
     <a href="#cli-tool">CLI Tool</a> •
+    <a href="#development">Development</a> •
     <a href="#contributing">Contributing</a>
 </p>
 
 ---
 
-**Rust shadcn/ui** is a comprehensive port of [shadcn/ui](https://ui.shadcn.com/) for Rust web frameworks. This project provides accessible, customizable, and beautifully designed UI components that integrate seamlessly with Tailwind CSS.
+**Leptos shadcn/ui** is the definitive UI library for Leptos applications, providing accessible, customizable, and beautifully designed components that integrate seamlessly with Tailwind CSS. Built specifically for Leptos with performance and developer experience in mind.
 
-> **Note**: This is the CloudShuttle fork of the Rust shadcn/ui project, featuring enhanced development tooling, auto-closing Playwright tests, and improved package management with pnpm.
+> **Note**: This is the CloudShuttle fork of the Rust shadcn/ui project, focused exclusively on Leptos with enhanced development tooling, auto-closing Playwright tests, and improved package management with pnpm.
 
 ## ✨ Features
 
 - 🎨 **Beautiful Components**: Faithfully ported from shadcn/ui with all styling and variants
-- 🦀 **Rust Native**: Built specifically for Rust web frameworks with type safety
+- 🦀 **Leptos Native**: Built specifically for Leptos with type safety and performance
 - 🔧 **CLI Tool**: Powerful command-line interface for component generation and management
 - 🎭 **Theme Variants**: Support for default and New York design themes
 - ⚡ **Performance**: Optimized components with minimal runtime overhead
@@ -50,8 +50,8 @@
 #### Option 1: Using Nix (Recommended)
 ```bash
 # Clone the repository
-git clone https://github.com/cloud-shuttle/shadcn-ui.git
-cd shadcn-ui
+git clone https://github.com/cloud-shuttle/leptos-shadcn-ui.git
+cd leptos-shadcn-ui
 
 # Enter the Nix development environment
 nix develop
@@ -64,8 +64,8 @@ pnpm test
 #### Option 2: Manual Setup
 ```bash
 # Clone the repository
-git clone https://github.com/cloud-shuttle/shadcn-ui.git
-cd shadcn-ui
+git clone https://github.com/cloud-shuttle/leptos-shadcn-ui.git
+cd leptos-shadcn-ui
 
 # Install Node.js dependencies
 pnpm install
@@ -74,8 +74,39 @@ pnpm install
 cargo build
 
 # Test components
-cargo test -p shadcn-ui-leptos-button
+cargo test -p leptos-shadcn-ui-button
 pnpm test
+```
+
+### Using Components in Your Leptos Project
+
+```bash
+# Add individual components to your project
+cargo add leptos-shadcn-ui-button
+cargo add leptos-shadcn-ui-card
+cargo add leptos-shadcn-ui-dialog
+cargo add leptos-shadcn-ui-form
+# ... add components as needed
+```
+
+```rust
+use leptos::*;
+use leptos_shadcn_ui_button::Button;
+use leptos_shadcn_ui_card::{Card, CardContent, CardHeader, CardTitle};
+
+#[component]
+pub fn MyComponent() -> impl IntoView {
+    view! {
+        <Card>
+            <CardHeader>
+                <CardTitle>"Welcome to Leptos shadcn/ui!"</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <Button>"Click me!"</Button>
+            </CardContent>
+        </Card>
+    }
+}
 ```
 
 ## 🔧 CLI Tool
@@ -90,92 +121,76 @@ cargo run -p shadcn -- generate --name "dialog" --framework "leptos"
 # Generate with custom styling
 cargo run -p shadcn -- generate \
   --name "tooltip" \
-  --framework "yew" \
+  --framework "leptos" \
   --classes "rounded-md bg-primary px-3 py-1 text-primary-foreground" \
   --description "A tooltip component"
 ```
 
 ### Available Commands
 - `generate` - Generate new component scaffolds
-- `init` - Initialize a new project with shadcn/ui
-- `add` - Add components to your project *(planned)*
-- `diff` - Check for component updates *(planned)*
-
-### CLI Options
-```bash
-USAGE:
-    rust-shadcn generate [OPTIONS] --name <NAME>
-
-OPTIONS:
-    -n, --name <NAME>                Name of the component to generate
-    -f, --framework <FRAMEWORK>      Target framework [default: leptos]
-    -c, --classes <CLASSES>          Base CSS classes for the component
-    -t, --tag <TAG>                  HTML tag to use [default: div]
-    -d, --description <DESCRIPTION>  Component description
-        --themes                     Generate both themes [default: true]
-```
-
-## 🏗️ Frameworks
-
-### Currently Supported
-
-#### [Leptos](https://leptos.dev/) ![Leptos](https://img.shields.io/badge/status-near--complete-brightgreen)
-- **Components**: 44/51 (86% coverage) - Near complete implementation!
-- **Features**: Signal-based reactivity, server-side rendering, hydration
-- **Status**: Production ready with comprehensive component library
-- **Missing**: avatar, data-table, chart, resizable, sidebar, sonner, typography
-
-#### [Yew](https://yew.rs/) ![Yew](https://img.shields.io/badge/status-stable-green)
-- **Components**: 20/51 (39% coverage)
-- **Features**: Component-based architecture, virtual DOM, WebAssembly  
-- **Status**: Solid foundation, 4 components missing from Leptos parity
-- **Available**: alert, aspect-ratio, avatar, badge, breadcrumb, button, card, checkbox, dialog, input, label, pagination, radio-group, select, separator, skeleton, switch, table, textarea, tooltip
-
-### Under Development
-
-#### [Dioxus](https://dioxuslabs.com/) ![Dioxus](https://img.shields.io/badge/status-planned-blue)
-- **Status**: Framework support in planning phase
-- **Timeline**: Component generator templates ready
+- `init` - Initialize a new project with Leptos shadcn/ui
 
 ## 📦 Components
 
 ### Available Components
 
-| Component | Leptos | Yew | Description |
-|-----------|:------:|:---:|-------------|
-| Alert | ✅ | ✅ | Displays a callout for user attention |
-| Aspect Ratio | ✅ | ✅ | Displays content within a desired ratio |
-| Avatar | ❌ | ✅ | Represents a user or entity |
-| Badge | ✅ | ✅ | Displays a badge or a component |
-| Breadcrumb | ❌ | ✅ | Navigation aid showing page hierarchy |
-| Button | ✅ | ✅ | Triggers an action or event |
-| Card | ✅ | ✅ | Container for related information |
-| Checkbox | ✅ | ✅ | Binary choice input |
-| Combobox | ✅ | ❌ | Searchable select input |
-| Dialog | ✅ | ❌ | Modal dialog overlay |
-| Form | ✅ | ❌ | Form handling and validation |
-| Input | ✅ | ✅ | Text input field |
-| Label | ✅ | ✅ | Caption for form controls |
-| Pagination | ✅ | ❌ | Navigate through pages |
-| Radio Group | ✅ | ✅ | Single choice from options |
-| Select | ✅ | ❌ | Dropdown selection |
-| Separator | ✅ | ✅ | Visual or semantic separator |
-| Skeleton | ✅ | ✅ | Loading placeholder |
-| Switch | ✅ | ✅ | Binary toggle control |
-| Table | ✅ | ✅ | Structured data display |
-| Tabs | ✅ | ❌ | Tabbed content navigation |
-| Textarea | ✅ | ✅ | Multi-line text input |
-| Tooltip | ✅ | ❌ | Hover information display |
-| Utils | ✅ | ❌ | Utility functions and helpers |
+| Component | Status | Description |
+|-----------|:------:|-------------|
+| Alert | ✅ | Displays a callout for user attention |
+| Alert Dialog | ✅ | Modal dialog for destructive actions |
+| Accordion | ✅ | Collapsible content sections |
+| Aspect Ratio | ✅ | Displays content within a desired ratio |
+| Badge | ✅ | Displays a badge or a component |
+| Breadcrumb | ✅ | Navigation aid showing page hierarchy |
+| Button | ✅ | Triggers an action or event |
+| Calendar | ✅ | Date picker with calendar view |
+| Card | ✅ | Container for related information |
+| Carousel | ✅ | Slideshow for cycling through content |
+| Checkbox | ✅ | Binary choice input |
+| Collapsible | ✅ | Expandable content sections |
+| Combobox | ✅ | Searchable select input |
+| Command | ✅ | Command palette interface |
+| Context Menu | ✅ | Right-click context menu |
+| Date Picker | ✅ | Date selection component |
+| Dialog | ✅ | Modal dialog overlay |
+| Drawer | ✅ | Slide-out panel |
+| Dropdown Menu | ✅ | Dropdown menu component |
+| Error Boundary | ✅ | Error handling component |
+| Form | ✅ | Form handling and validation |
+| Hover Card | ✅ | Hover-triggered card |
+| Input | ✅ | Text input field |
+| Input OTP | ✅ | One-time password input |
+| Label | ✅ | Caption for form controls |
+| Lazy Loading | ✅ | Dynamic component loading |
+| Menubar | ✅ | Horizontal menu bar |
+| Navigation Menu | ✅ | Navigation menu component |
+| Pagination | ✅ | Navigate through pages |
+| Popover | ✅ | Floating content panel |
+| Progress | ✅ | Progress indicator |
+| Radio Group | ✅ | Single choice from options |
+| Registry | ✅ | Component registry system |
+| Scroll Area | ✅ | Custom scrollable area |
+| Select | ✅ | Dropdown selection |
+| Separator | ✅ | Visual or semantic separator |
+| Sheet | ✅ | Slide-out sheet |
+| Skeleton | ✅ | Loading placeholder |
+| Slider | ✅ | Range input component |
+| Switch | ✅ | Binary toggle control |
+| Table | ✅ | Structured data display |
+| Tabs | ✅ | Tabbed content navigation |
+| Textarea | ✅ | Multi-line text input |
+| Toast | ✅ | Notification component |
+| Toggle | ✅ | Toggle button component |
+| Tooltip | ✅ | Hover information display |
+| Utils | ✅ | Utility functions and helpers |
 
 ### Component Status Legend
 - ✅ **Available**: Ready for production use
-- ❌ **Planned**: In development roadmap
 - 🚧 **In Progress**: Currently being developed
+- 📋 **Planned**: In development roadmap
 
 ### Package Status
 - **Total Leptos Packages**: 47/51 (92% coverage) 🎉
-- **Total Yew Components**: 20/51 (39% coverage)
 - **Registry Package**: ✅ Available for component discovery
 - **Lazy Loading**: ✅ Available for dynamic component loading
 - **Test Utils**: ✅ Available for testing infrastructure
@@ -185,28 +200,24 @@ OPTIONS:
 
 ### Workspace Structure
 ```
-shadcn-ui/
+leptos-shadcn-ui/
 ├── packages/
 │   ├── shadcn/              # CLI tool
 │   ├── registry/            # Component registry
 │   ├── component-generator/ # Code generation
 │   ├── test-utils/          # Testing utilities
-│   ├── leptos/             # Leptos components
-│   │   ├── button/         # Individual components
-│   │   ├── card/
-│   │   └── ...
-│   └── yew/                # Yew components
-│       ├── button/
+│   └── leptos/             # Leptos components
+│       ├── button/         # Individual components
 │       ├── card/
 │       └── ...
-├── book-examples/          # Documentation examples
+├── examples/                # Documentation examples
 └── docs/                   # Additional documentation
 ```
 
 ### Design Principles
 
 1. **Component Isolation**: Each component is a separate crate for modularity
-2. **Framework Parity**: Consistent API across all supported frameworks  
+2. **Leptos Optimization**: Built specifically for Leptos patterns and conventions
 3. **Theme Support**: Default and New York variants for all components
 4. **Type Safety**: Leverage Rust's type system for component props
 5. **Performance**: Minimal runtime overhead and optimal bundle sizes
@@ -222,82 +233,155 @@ This project includes a complete Nix development environment that provides:
 
 ### Auto-Closing Playwright Tests
 - **645+ Tests**: Comprehensive end-to-end testing across all components
-- **Browser Testing**: Chrome, Safari, and WebKit compatibility
-- **Auto-Closing**: Tests automatically close after completion (no hanging processes)
-- **Performance Monitoring**: Bundle size analysis and optimization tools
+- **Browser Coverage**: Tests run in Chromium, Firefox, and WebKit
+- **Visual Regression**: Automated visual testing for component consistency
+- **Accessibility**: WCAG compliance testing built-in
 
-## 🧪 Development
-```bash
-# Build all components
-cargo build
+## 📚 Examples
 
-# Build specific framework components
-cargo build -p shadcn-ui-leptos-button
-cargo build -p shadcn-ui-yew-button
+### Basic Usage
+```rust
+use leptos::*;
+use leptos_shadcn_ui_button::Button;
+use leptos_shadcn_ui_card::{Card, CardContent, CardHeader, CardTitle};
 
-# Run component tests
-cargo test -p shadcn-ui-leptos-button
+#[component]
+pub fn WelcomeCard() -> impl IntoView {
+    view! {
+        <Card class="w-96">
+            <CardHeader>
+                <CardTitle>"Welcome!"</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p class="text-muted-foreground">
+                    "This is a beautiful card component built with Leptos shadcn/ui."
+                </p>
+                <Button class="mt-4">"Get Started"</Button>
+            </CardContent>
+        </Card>
+    }
+}
 ```
 
-### Adding New Components
+### Form Example
+```rust
+use leptos::*;
+use leptos_shadcn_ui_form::{Form, FormField, FormItem, FormLabel, FormControl, FormMessage};
+use leptos_shadcn_ui_input::Input;
+use leptos_shadcn_ui_button::Button;
 
-1. **Use the generator:**
-   ```bash
-   cargo run -p shadcn -- generate --name "new-component" --framework "leptos"
-   ```
+#[component]
+pub fn ContactForm() -> impl IntoView {
+    let (name, set_name) = create_signal(String::new());
+    let (email, set_email) = create_signal(String::new());
 
-2. **Implement the component** following existing patterns
+    let handle_submit = move |_| {
+        log::info!("Name: {}, Email: {}", name.get(), email.get());
+    };
 
-3. **Add tests** in the component directory
+    view! {
+        <Form on_submit=handle_submit>
+            <FormField>
+                <FormItem>
+                    <FormLabel>"Name"</FormLabel>
+                    <FormControl>
+                        <Input
+                            value=name.get()
+                            on_input=move |ev| set_name.set(event_target_value(&ev))
+                            placeholder="Enter your name"
+                        />
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            </FormField>
+            
+            <FormField>
+                <FormItem>
+                    <FormLabel>"Email"</FormLabel>
+                    <FormControl>
+                        <Input
+                            value=email.get()
+                            on_input=move |ev| set_email.set(event_target_value(&ev))
+                            placeholder="Enter your email"
+                            type_="email"
+                        />
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            </FormField>
+            
+            <Button type_="submit" class="w-full">"Submit"</Button>
+        </Form>
+    }
+}
+```
 
-4. **Update documentation** and examples
+## 🧪 Testing
 
-See [CLAUDE.md](./CLAUDE.md) for detailed development guidelines.
+### Running Tests
+```bash
+# Run all tests
+cargo test
+
+# Run specific component tests
+cargo test -p leptos-shadcn-ui-button
+
+# Run Playwright tests
+pnpm test
+
+# Run Playwright tests with UI
+pnpm test:playwright:ui
+```
+
+### Test Coverage
+- **Unit Tests**: Comprehensive testing of component logic
+- **Integration Tests**: Component interaction testing
+- **E2E Tests**: Full browser testing with Playwright
+- **Accessibility Tests**: WCAG compliance verification
+- **Visual Tests**: Automated visual regression testing
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
+We welcome contributions! Here's how you can help:
 
 ### Development Setup
-1. Fork and clone the repository
-2. **Recommended**: Use Nix for development environment
-   ```bash
-   nix develop
-   ```
-3. **Alternative**: Manual setup
-   - Install Rust and required targets: `rustup target add wasm32-unknown-unknown`
-   - Install Node.js and pnpm
-4. Build the project: `cargo build`
-5. Run tests: `pnpm test` (Playwright) or `cargo test` (Rust)
-6. Make your changes and submit a PR
+1. **Fork the repository**
+2. **Clone your fork**: `git clone https://github.com/your-username/leptos-shadcn-ui.git`
+3. **Enter Nix environment**: `nix develop`
+4. **Install dependencies**: `pnpm install`
+5. **Build the project**: `cargo build`
+6. **Run tests**: `pnpm test`
 
-### Component Contributions
-- Use the CLI generator for consistent scaffolding
-- Follow established patterns from existing components
-- Include tests and documentation
-- Support both default and New York themes
+### Adding New Components
+1. **Generate scaffold**: `cargo run -p shadcn -- generate --name "new-component" --framework "leptos"`
+2. **Implement component** following existing patterns
+3. **Add tests** for component functionality
+4. **Update registry** with component metadata
+5. **Submit pull request**
 
-## 📚 Documentation
+### Code Style
+- Follow Rust formatting with `cargo fmt`
+- Use `cargo clippy` for linting
+- Ensure all tests pass before submitting
+- Follow existing component patterns
 
-- **[Book](https://shadcn-ui.rustforweb.org)**: Complete documentation and guides
-- **[CLAUDE.md](./CLAUDE.md)**: Developer quick reference
-- **[API Docs](./docs/api/)**: Generated API documentation
-- **[Examples](./book-examples/)**: Framework-specific examples
+## 📄 License
 
-## Credits
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-The logo is a combination of the [shadcn/ui logo](https://github.com/shadcn-ui/ui/blob/main/apps/www/components/icons.tsx) and [Ferris the Rustacean](https://rustacean.net/).
+## 🙏 Acknowledgments
 
-## License
+- **shadcn/ui** - Original design system and components
+- **Leptos** - The amazing Rust web framework
+- **Tailwind CSS** - Utility-first CSS framework
+- **Radix UI** - Accessible component primitives
 
-This project is available under the [MIT license](LICENSE.md).
+## 📞 Support
 
-## CloudShuttle Fork
+- **GitHub Issues**: [Report bugs or request features](https://github.com/cloud-shuttle/leptos-shadcn-ui/issues)
+- **Discussions**: [Join the community](https://github.com/cloud-shuttle/leptos-shadcn-ui/discussions)
+- **Documentation**: [Comprehensive guides and examples](https://github.com/cloud-shuttle/leptos-shadcn-ui/docs)
 
-This is the CloudShuttle fork of the Rust shadcn/ui project, featuring enhanced development tooling and improved testing infrastructure.
+---
 
-## Rust for Web
-
-The original Rust shadcn/ui project is part of [Rust for Web](https://github.com/RustForWeb).
-
-[Rust for Web](https://github.com/RustForWeb) creates and ports web libraries for Rust. All projects are free and open source.
+**Made with ❤️ by CloudShuttle for the Leptos community**

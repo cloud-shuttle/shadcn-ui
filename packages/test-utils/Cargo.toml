@@ -18,9 +18,7 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 
 # Framework-specific testing
-yew = { workspace = true, optional = true }
 leptos = { workspace = true }
 
 [features]
 default = []
-yew-testing = ["yew"]
