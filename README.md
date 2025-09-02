@@ -22,6 +22,8 @@
 
 **Rust shadcn/ui** is a comprehensive port of [shadcn/ui](https://ui.shadcn.com/) for Rust web frameworks. This project provides accessible, customizable, and beautifully designed UI components that integrate seamlessly with Tailwind CSS.
 
+> **Note**: This is the CloudShuttle fork of the Rust shadcn/ui project, featuring enhanced development tooling, auto-closing Playwright tests, and improved package management with pnpm.
+
 ## ✨ Features
 
 - 🎨 **Beautiful Components**: Faithfully ported from shadcn/ui with all styling and variants
@@ -31,6 +33,9 @@
 - ⚡ **Performance**: Optimized components with minimal runtime overhead
 - 🧪 **Type Safety**: Full TypeScript-equivalent type safety with Rust's type system
 - 📱 **Responsive**: Mobile-first responsive design out of the box
+- 🚀 **Enhanced Development**: Nix development environment with auto-closing Playwright tests
+- 📦 **Package Management**: Optimized with pnpm for faster dependency installation
+- 🧪 **Testing Infrastructure**: 645+ passing tests with comprehensive browser testing
 
 ## 🚀 Quick Start
 
@@ -38,25 +43,40 @@
 
 - Rust 1.70+ with `wasm32-unknown-unknown` target
 - Node.js 18+ (for Tailwind CSS)
+- **Nix** (optional but recommended for development)
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/RustForWeb/shadcn-ui.git
-   cd shadcn-ui
-   ```
+#### Option 1: Using Nix (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/cloud-shuttle/shadcn-ui.git
+cd shadcn-ui
 
-2. **Build the workspace:**
-   ```bash
-   cargo build
-   ```
+# Enter the Nix development environment
+nix develop
 
-3. **Test components:**
-   ```bash
-   cargo test -p shadcn-ui-leptos-button
-   cargo test -p shadcn-ui-yew-button
-   ```
+# Build and test
+cargo build
+pnpm test
+```
+
+#### Option 2: Manual Setup
+```bash
+# Clone the repository
+git clone https://github.com/cloud-shuttle/shadcn-ui.git
+cd shadcn-ui
+
+# Install Node.js dependencies
+pnpm install
+
+# Build the workspace
+cargo build
+
+# Test components
+cargo test -p shadcn-ui-leptos-button
+pnpm test
+```
 
 ## 🔧 CLI Tool
 
@@ -131,20 +151,35 @@ OPTIONS:
 | Button | ✅ | ✅ | Triggers an action or event |
 | Card | ✅ | ✅ | Container for related information |
 | Checkbox | ✅ | ✅ | Binary choice input |
-| Input | ❌ | ✅ | Text input field |
-| Label | ❌ | ✅ | Caption for form controls |
-| Pagination | ❌ | ✅ | Navigate through pages |
+| Combobox | ✅ | ❌ | Searchable select input |
+| Dialog | ✅ | ❌ | Modal dialog overlay |
+| Form | ✅ | ❌ | Form handling and validation |
+| Input | ✅ | ✅ | Text input field |
+| Label | ✅ | ✅ | Caption for form controls |
+| Pagination | ✅ | ❌ | Navigate through pages |
 | Radio Group | ✅ | ✅ | Single choice from options |
-| Separator | ❌ | ✅ | Visual or semantic separator |
-| Skeleton | ❌ | ✅ | Loading placeholder |
-| Switch | ❌ | ✅ | Binary toggle control |
-| Table | ❌ | ✅ | Structured data display |
-| Textarea | ❌ | ✅ | Multi-line text input |
+| Select | ✅ | ❌ | Dropdown selection |
+| Separator | ✅ | ✅ | Visual or semantic separator |
+| Skeleton | ✅ | ✅ | Loading placeholder |
+| Switch | ✅ | ✅ | Binary toggle control |
+| Table | ✅ | ✅ | Structured data display |
+| Tabs | ✅ | ❌ | Tabbed content navigation |
+| Textarea | ✅ | ✅ | Multi-line text input |
+| Tooltip | ✅ | ❌ | Hover information display |
+| Utils | ✅ | ❌ | Utility functions and helpers |
 
 ### Component Status Legend
 - ✅ **Available**: Ready for production use
 - ❌ **Planned**: In development roadmap
 - 🚧 **In Progress**: Currently being developed
+
+### Package Status
+- **Total Leptos Components**: 25/51 (49% coverage)
+- **Total Yew Components**: 20/51 (39% coverage)
+- **Registry Package**: ✅ Available for component discovery
+- **Lazy Loading**: ✅ Available for dynamic component loading
+- **Test Utils**: ✅ Available for testing infrastructure
+- **CLI Tool**: ✅ Available for component generation
 
 ## 🏗️ Architecture
 
@@ -176,9 +211,22 @@ shadcn-ui/
 4. **Type Safety**: Leverage Rust's type system for component props
 5. **Performance**: Minimal runtime overhead and optimal bundle sizes
 
-## 🧪 Development
+## 🚀 Enhanced Development Features
 
-### Building Components
+### Nix Development Environment
+This project includes a complete Nix development environment that provides:
+- **Rust Toolchain**: Latest stable Rust with WebAssembly support
+- **Node.js & pnpm**: Fast package management and Playwright testing
+- **Build Tools**: Make, pkg-config, and other essential development tools
+- **Cross-Platform**: Works on macOS, Linux, and Windows
+
+### Auto-Closing Playwright Tests
+- **645+ Tests**: Comprehensive end-to-end testing across all components
+- **Browser Testing**: Chrome, Safari, and WebKit compatibility
+- **Auto-Closing**: Tests automatically close after completion (no hanging processes)
+- **Performance Monitoring**: Bundle size analysis and optimization tools
+
+## 🧪 Development
 ```bash
 # Build all components
 cargo build
@@ -212,10 +260,16 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 
 ### Development Setup
 1. Fork and clone the repository
-2. Install Rust and required targets: `rustup target add wasm32-unknown-unknown`  
-3. Build the project: `cargo build`
-4. Run tests: `cargo test`
-5. Make your changes and submit a PR
+2. **Recommended**: Use Nix for development environment
+   ```bash
+   nix develop
+   ```
+3. **Alternative**: Manual setup
+   - Install Rust and required targets: `rustup target add wasm32-unknown-unknown`
+   - Install Node.js and pnpm
+4. Build the project: `cargo build`
+5. Run tests: `pnpm test` (Playwright) or `cargo test` (Rust)
+6. Make your changes and submit a PR
 
 ### Component Contributions
 - Use the CLI generator for consistent scaffolding
@@ -238,8 +292,12 @@ The logo is a combination of the [shadcn/ui logo](https://github.com/shadcn-ui/u
 
 This project is available under the [MIT license](LICENSE.md).
 
+## CloudShuttle Fork
+
+This is the CloudShuttle fork of the Rust shadcn/ui project, featuring enhanced development tooling and improved testing infrastructure.
+
 ## Rust for Web
 
-The Rust shadcn/ui project is part of [Rust for Web](https://github.com/RustForWeb).
+The original Rust shadcn/ui project is part of [Rust for Web](https://github.com/RustForWeb).
 
 [Rust for Web](https://github.com/RustForWeb) creates and ports web libraries for Rust. All projects are free and open source.
