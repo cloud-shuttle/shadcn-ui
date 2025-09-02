@@ -128,7 +128,7 @@ OPTIONS:
 #### [Yew](https://yew.rs/) ![Yew](https://img.shields.io/badge/status-stable-green)
 - **Components**: 20/51 (39% coverage)
 - **Features**: Component-based architecture, virtual DOM, WebAssembly  
-- **Status**: Solid foundation, 25 components missing from Leptos parity
+- **Status**: Solid foundation, 4 components missing from Leptos parity
 - **Available**: alert, aspect-ratio, avatar, badge, breadcrumb, button, card, checkbox, dialog, input, label, pagination, radio-group, select, separator, skeleton, switch, table, textarea, tooltip
 
 ### Under Development
@@ -174,7 +174,7 @@ OPTIONS:
 - 🚧 **In Progress**: Currently being developed
 
 ### Package Status
-- **Total Leptos Components**: 47/51 (92% coverage) 🎉
+- **Total Leptos Packages**: 47/51 (92% coverage) 🎉
 - **Total Yew Components**: 20/51 (39% coverage)
 - **Registry Package**: ✅ Available for component discovery
 - **Lazy Loading**: ✅ Available for dynamic component loading
